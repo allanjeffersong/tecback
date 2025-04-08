@@ -5,7 +5,6 @@ package br.uniesp.si.techback.service;
 import br.uniesp.si.techback.model.Usuario;  // Importa a classe Usuario, que é a entidade a ser manipulada
 import br.uniesp.si.techback.repository.UsuarioRepository;  // Importa o repositório UsuarioRepository para acessar os dados no banco de dados
 import jakarta.persistence.EntityNotFoundException;  // Importa a exceção para casos em que a entidade não for encontrada
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;  // Importa a anotação para injeção de dependência
 import org.springframework.stereotype.Service;  // Importa a anotação para indicar que a classe é um serviço
 
@@ -13,12 +12,11 @@ import java.util.List;  // Importa a classe List, que é usada para retornar col
 
 // Definindo a classe UsuarioService como um serviço Spring
 @Service  // Indica que a classe é um componente de serviço Spring, responsável pela lógica de negócios
-@RequiredArgsConstructor
 public class UsuarioService {
 
     // Injeção de dependência para o repositório UsuarioRepository
-
-    private final UsuarioRepository repository;
+    @Autowired  // Permite que o Spring injete automaticamente uma instância do UsuarioRepository
+    private UsuarioRepository repository;
 
     // Método para cadastrar um usuário no banco de dados
     public Usuario cadastar(Usuario usuario) {

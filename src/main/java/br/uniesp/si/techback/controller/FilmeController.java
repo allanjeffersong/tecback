@@ -5,7 +5,6 @@ package br.uniesp.si.techback.controller;
 import br.uniesp.si.techback.model.Filme;
 import br.uniesp.si.techback.repository.FilmeRepository;
 import br.uniesp.si.techback.service.FilmeService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +13,14 @@ import java.util.List;
 
 // Definindo que esta classe é um controlador REST com as anotações do Spring
 @RestController
-@RequiredArgsConstructor
 
 // Definindo que todas as requisições feitas a este controlador começarão com a URL "/filmes"
 @RequestMapping("/filmes")
 public class FilmeController {
 
     // Injetando o serviço FilmeService na classe, o Spring vai gerenciar esta dependência automaticamente
-
-    private final FilmeService service;
+    @Autowired  // Iremos remover essa anotação na próxima aula (comentário sobre remoção futura)
+    private FilmeService service;
 
     // Método que irá responder a requisições GET para a URL "/filmes"
     @GetMapping
